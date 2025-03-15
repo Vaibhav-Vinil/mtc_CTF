@@ -57,7 +57,7 @@ body {
 }
 
 /* Horror Elements */
-.horror-overlay {
+/* .horror-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -76,7 +76,7 @@ body {
   z-index: 2;
   animation: scanline 8s linear infinite;
   opacity: 0.03;
-}
+} */
 
 .vignette {
   position: fixed;
@@ -311,7 +311,7 @@ a:hover {
   font-size: 36px;
   margin-bottom: 20px;
   animation: textFlicker 4s infinite;
-  color: var(--accent-primary);
+  color: var(#FF5555);
 }
 
 .welcome-banner p {
@@ -559,7 +559,7 @@ a:hover {
 }
 
 /* Animations */
-@keyframes textFlicker {
+/* @keyframes textFlicker {
   0% { opacity: 1; text-shadow: var(--neon-glow-red); }
   1% { opacity: 0.8; text-shadow: none; }
   2% { opacity: 1; text-shadow: var(--neon-glow-red); }
@@ -575,7 +575,7 @@ a:hover {
   70% { opacity: 1; text-shadow: var(--neon-glow-red); }
   71% { opacity: 0.8; text-shadow: none; }
   72% { opacity: 1; text-shadow: var(--neon-glow-red); }
-}
+} */
 
 .logo h1, .section-title, .timer-value {
   animation: textFlicker 4s infinite;
