@@ -40,7 +40,6 @@ ambientSound.volume = CONFIG.audio.volume;
 
 // Navigation Handler
 function handleNavigation() {
-  // Set active state based on current page
   const currentPath = window.location.pathname;
   elements.navItems.forEach(item => {
     const href = item.getAttribute('href');
@@ -51,20 +50,16 @@ function handleNavigation() {
     }
   });
 
-  // Add click handlers
   elements.navItems.forEach(item => {
     item.addEventListener('click', (e) => {
       e.preventDefault();
       
-      // Add a subtle transition effect
       elements.body.style.opacity = '0';
       
-      // Play a subtle click sound
       const clickSound = new Audio(CONFIG.navigation.clickSound);
       clickSound.volume = 0.1;
       clickSound.play().catch(e => console.log('Click sound failed:', e));
       
-      // Add a small delay before navigation
       setTimeout(() => {
         window.location.href = item.getAttribute('href');
       }, CONFIG.navigation.transitionDelay);
@@ -111,6 +106,17 @@ function applyFlickerEffect() {
   }
 }
 
+// Add "Completed" text for solved challenges with green color
+function markCompletedChallenges() {
+  document.querySelectorAll('.challenge-card.solved .challenge-title').forEach(title => {
+    if (!title.querySelector('.completed-text')) {
+      const completedSpan = document.createElement('span');
+      completedSpan.classList.add('completed-text');
+      completedSpan.textContent = " Completed";
+      title.appendChild(completedSpan);
+    }
+  });
+}
 // Event Listeners
 document.addEventListener('click', () => {
   ambientSound.play().catch(e => console.log('Audio play failed:', e));
@@ -118,16 +124,14 @@ document.addEventListener('click', () => {
 
 // Initialize
 function init() {
-  // Add fade-in effect when page loads
   elements.body.style.opacity = '1';
-  
   initializeAnimations();
   handleNavigation();
-  
-  // Set up intervals
+  markCompletedChallenges();
+
   setInterval(applyGlitchEffect, CONFIG.animations.glitch.interval);
   setInterval(applyFlickerEffect, CONFIG.animations.flicker.interval);
 }
 
 // Start the application
-init(); 
+init();
